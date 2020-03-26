@@ -1,0 +1,19 @@
+
+spring:
+  application:
+      name: single-server
+#  profiles:
+#    active: dev
+
+
+
+
+server:
+  port: 10000
+  servlet:
+    context-path: /
+#  address: localhost
+
+
+
+
