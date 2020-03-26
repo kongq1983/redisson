@@ -5,3 +5,34 @@ https://github.com/redisson/redisson/wiki/Table-of-Content
 
 spring boot starter
 https://github.com/redisson/redisson/wiki/14.-Integration-with-frameworks#1410-spring-boot-starter
+
+spring boot starter
+https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter#spring-boot-starter
+
+-----------------------------------------------------------------------------------------------------------
+
+# common spring boot settings
+
+spring.redis.database=
+spring.redis.host=
+spring.redis.port=
+spring.redis.password=
+spring.redis.ssl=
+spring.redis.timeout=
+spring.redis.cluster.nodes=
+spring.redis.sentinel.master=
+spring.redis.sentinel.nodes=
+
+# Redisson settings
+
+#path to config - redisson.yaml
+spring.redis.redisson.config=classpath:redisson.yaml
+
+@See org.springframework.boot.autoconfigure.data.redis.RedisProperties
+@See org.redisson.spring.starter.RedissonProperties
+@See org.redisson.spring.starter.RedissonAutoConfiguration
+
+-----------------------------------------------------------------------------------------------------------
+
+http://localhost:10000/redis/set?key=name&value=china
+http://localhost:10000/redis/get?key=name

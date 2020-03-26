@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>single-server</module>
+        <module>redisson-service</module>
     </modules>
 
     <parent>
@@ -32,7 +33,7 @@
         <common.lang3.version>3.8.1</common.lang3.version>
         <common.io.version>2.6</common.io.version>
         <redisson.spring.boot.starter.version>3.12.2</redisson.spring.boot.starter.version>
-
+        <redission.server.version>1.0-SNAPSHOT</redission.server.version>
     </properties>
 
 
@@ -43,7 +44,9 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.spring.boot.starter.version}</version>
             </dependency>
+
         </dependencies>
+
 
     </dependencyManagement>
 
@@ -67,6 +70,11 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>${redisson.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kq</groupId>
+            <artifactId>redisson-service</artifactId>
+            <version>${redission.server.version}</version>
         </dependency>
 
     </dependencies>
