@@ -34,5 +34,5 @@ spring.redis.redisson.config=classpath:redisson.yaml
 
 -----------------------------------------------------------------------------------------------------------
 
-http://localhost:10000/redis/set?key=name&value=china
-http://localhost:10000/redis/get?key=name
+http://localhost:10001/redis/set?key=name&value=china
+http://localhost:10001/redis/get?key=name

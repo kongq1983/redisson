@@ -1,7 +1,7 @@
 
 spring:
   application:
-      name: single-server
+      name: distributed-lock
   # 单机redis 配置
   redis:
     host: 192.168.99.100
@@ -15,7 +15,7 @@ spring:
 
 
 server:
-  port: 10001
+  port: 10002
   servlet:
     context-path: /
 #  address: localhost
