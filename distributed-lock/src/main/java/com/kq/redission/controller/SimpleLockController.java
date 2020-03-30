@@ -1,6 +1,7 @@
 package com.kq.redission.controller;
 
 
+import com.kq.redission.component.FairLockComponent;
 import com.kq.redission.component.LockComponent;
 import com.kq.redission.component.SemaphoreComponent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class SimpleLockController {
     private LockComponent lockComponent;
 
     @Autowired
+    private FairLockComponent fairLockComponent;
+
+    @Autowired
     private SemaphoreComponent semaphoreComponent;
 
 
@@ -23,6 +27,36 @@ public class SimpleLockController {
 
         try{
             lockComponent.lockByTime();
+        }catch (Exception e){
+            return e.getMessage();
+        }
+
+        return "ok";
+
+    }
+
+
+
+    @RequestMapping("/redis/lockTime")
+    public String lockTime() {
+
+        try{
+            lockComponent.testLockTime();
+        }catch (Exception e){
+            return e.getMessage();
+        }
+
+        return "ok";
+
+    }
+
+
+
+    @RequestMapping("/redis/fairLock")
+    public String fairLock() {
+
+        try{
+            fairLockComponent.lockByTime();
         }catch (Exception e){
             return e.getMessage();
         }
@@ -44,6 +78,8 @@ public class SimpleLockController {
         return "ok";
 
     }
+
+
 
 
 }

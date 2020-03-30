@@ -19,6 +19,7 @@ public class LockComponent {
     protected Logger logger = LoggerFactory.getLogger(LockComponent.class);
 
     public static final String KEY = "lock:key";
+    public static final String LOCK_TIME_KEY = "lock:keyTime";
 
 
     @Autowired
@@ -63,9 +64,59 @@ public class LockComponent {
     }
 
 
-    public void start(){
+    /**
+     * ab -n 1 -c 1  http://192.168.6.170:10002/redis/lock
+     */
+    public void testLockTime(){
+
+        RLock lock = null;
+        int secnod = 5;
+        try {
+            logger.info(DateUtil.getFormatDate()+","+Thread.currentThread().getName()+"开始尝试获取锁");
+            lock = redissonClient.getLock(LOCK_TIME_KEY);
+            // 锁住5s
+//            lock.lock(5, TimeUnit.SECONDS);
+//            lock.lock();
+//            lock.tryLock(20,TimeUnit.SECONDS);
+            // 等3s  持有20s
+            lock.tryLock(3,20,TimeUnit.SECONDS);
+
+            if(lock.isLocked()) {
+                logger.info(DateUtil.getFormatDate()+","+Thread.currentThread().getName()+"得到锁 休息 "+secnod+"s !");
+            }else {
+                logger.info(DateUtil.getFormatDate()+","+Thread.currentThread().getName()+"未得到锁 =======================");
+            }
+
+            int lockSize = 0;
+
+            for(int i=0;i<lockSize;i++) {
+                lock.lock();
+
+            }
+
+            try {
+                TimeUnit.SECONDS.sleep(500);
+            } catch (Exception e) {
+                logger.error("报错1",e);
+            }
 
 
+            for(int i=0;i<lockSize;i++) {
+                lock.unlock();
+            }
+
+        } catch (Exception e) {
+            logger.error("报错2",e);
+        }
+        finally {
+            logger.info(Thread.currentThread().getName()+":finally");
+            try {
+                lock.unlock();
+            }catch (Exception ee) {
+                logger.error("===================ee",ee);
+            }
+            logger.info(DateUtil.getFormatDate()+","+Thread.currentThread().getName()+"释放锁");
+        }
 
 
 
