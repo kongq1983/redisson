@@ -12,6 +12,7 @@
         <module>single-server</module>
         <module>redisson-service</module>
         <module>distributed-lock</module>
+        <module>distributed-collection</module>
     </modules>
 
     <parent>

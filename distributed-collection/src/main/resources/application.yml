@@ -1,0 +1,25 @@
+
+spring:
+  application:
+      name: distributed-collection
+  # 单机redis 配置
+  redis:
+    host: 192.168.99.100
+    port: 6379
+    database: 0
+    password: jkct-redis-123456
+#  profiles:
+#    active: dev
+
+
+
+
+server:
+  port: 10005
+  servlet:
+    context-path: /
+#  address: localhost
+
+
+
+
