@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @RestController
 public class MapController {
 
@@ -42,6 +45,23 @@ public class MapController {
             return username+":"+mapComponent.put(username);
         }catch (Exception e){
             return e.getMessage();
+        }
+
+    }
+
+    /**
+     * http://192.168.6.170:10005/map/values
+     * @return
+     */
+    @RequestMapping("/map/values")
+    public Collection<String> values() {
+
+        try{
+            return mapComponent.values();
+        }catch (Exception e){
+            ArrayList list = new ArrayList<>();
+            list.add(e.getMessage());
+            return list;
         }
 
     }
