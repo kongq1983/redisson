@@ -13,6 +13,7 @@
         <module>redisson-service</module>
         <module>distributed-lock</module>
         <module>distributed-collection</module>
+        <module>redisson-config</module>
     </modules>
 
     <parent>
