@@ -3,10 +3,12 @@ package com.kq.redission.singleserver.controller;
 
 import com.kq.redission.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,9 @@ public class RedisController {
 
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
 
     @RequestMapping("/redis/get")
@@ -41,5 +46,18 @@ public class RedisController {
 
     }
 
+
+    @RequestMapping("/redis/haskey")
+    public String haskey(@RequestParam("key")String key) {
+
+        try{
+            return String.valueOf(stringRedisTemplate.hasKey(key));
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+
+
+    }
 
 }
