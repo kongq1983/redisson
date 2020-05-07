@@ -22,6 +22,20 @@ public class SimpleLockController {
     private SemaphoreComponent semaphoreComponent;
 
 
+    @RequestMapping("/redis/notLock")
+    public String notLock() {
+
+        try{
+            lockComponent.notLock();
+        }catch (Exception e){
+            return e.getMessage();
+        }
+
+        return "ok";
+
+    }
+
+
     @RequestMapping("/redis/lock")
     public String lock() {
 

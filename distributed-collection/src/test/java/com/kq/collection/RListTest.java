@@ -14,10 +14,11 @@ public class RListTest extends BaseTest{
 
     public static final String LIST_KEY = "testListKey";
 
+
     @Before
     public void begin() throws Exception{
         System.out.println("call begin function");
-        this.flushdb();
+//        this.flushdb();
     }
 
     @Test
@@ -50,6 +51,46 @@ public class RListTest extends BaseTest{
         System.out.println("laodList = "+laodList);
         // LSET key index element
         list.fastSet(3,"a");
+
+
+    }
+
+    @Test
+    public void testClear() throws Exception{
+
+        RedissonClient redissonClient = this.redisson();
+        System.out.println("redissonClient="+redissonClient);
+        assertThat(redissonClient,notNullValue());
+
+
+        RList<String> list = redissonClient.getList(LIST_KEY);
+
+        for(int i=1;i<=10;i++) {
+            // LPUSH key element [element ...]
+            list.add(String.valueOf(i));
+        }
+
+        list.clear();
+
+    }
+
+    @Test
+    public void testOther() throws Exception{
+        RedissonClient redissonClient = this.redisson();
+        RList<String> list = redissonClient.getList("mylistkey");
+//        list.add("one");
+//        list.add("two");
+//        list.add("three");
+
+
+    }
+
+    @Test
+    public void testOther1() throws Exception{
+        RedissonClient redissonClient = this.redisson();
+        RList<String> list = redissonClient.getList("mylistkey1");
+        System.out.println("list:"+list);
+        System.out.println("list:"+list.size());
 
 
     }

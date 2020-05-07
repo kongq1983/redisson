@@ -4,9 +4,10 @@ spring:
       name: single-server
   # 单机redis 配置
   redis:
-    host: 192.168.99.100
+#    host: 192.168.99.100
+    host: 172.16.5.12
     port: 6379
-    database: 0
+    database: 12
     password: jkct-redis-123456
 #  profiles:
 #    active: dev
@@ -15,7 +16,7 @@ spring:
 
 
 server:
-  port: 10001
+  port: 10002
   servlet:
     context-path: /
 #  address: localhost
