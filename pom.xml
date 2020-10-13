@@ -30,7 +30,7 @@
         <okhttp3.version>3.14.0</okhttp3.version>
         <fastjson.version>1.2.56</fastjson.version>
         <guava.version>27.1-jre</guava.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <ehcache.version>3.7.0</ehcache.version>
         <javax.cache.version>1.1.0</javax.cache.version>
         <common.lang3.version>3.8.1</common.lang3.version>
