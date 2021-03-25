@@ -14,6 +14,7 @@
         <module>distributed-lock</module>
         <module>distributed-collection</module>
         <module>redisson-config</module>
+        <module>shopping-cart</module>
     </modules>
 
     <parent>
