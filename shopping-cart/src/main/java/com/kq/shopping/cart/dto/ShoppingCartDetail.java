@@ -22,6 +22,8 @@ public class ShoppingCartDetail implements Serializable {
     /** 修改时间 */
     private Date updateTime;
 
+    private String userId;
+
 
     public String getInventoryId() {
         return inventoryId;
@@ -63,6 +65,14 @@ public class ShoppingCartDetail implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "ShoppingCartDetail{" +
@@ -71,6 +81,7 @@ public class ShoppingCartDetail implements Serializable {
                 ", checked=" + checked +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

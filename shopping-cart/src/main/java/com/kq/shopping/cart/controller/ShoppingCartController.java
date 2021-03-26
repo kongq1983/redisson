@@ -52,6 +52,7 @@ public class ShoppingCartController {
                 detail.setSize(size);
                 detail.setCreateTime(date);
                 detail.setUpdateTime(date);
+                detail.setUserId(userId);
             }else {
                 detail.setSize(detail.getSize()+size);
                 detail.setUpdateTime(date);
@@ -117,6 +118,24 @@ public class ShoppingCartController {
     }
 
 
+    //http://localhost:10003/shopping/cart/clear/admin
+    @RequestMapping("/clear/{userId}")
+    public String shoppingCartClear(@PathVariable("userId")String userId){
+
+        try {
+            redissonClient.getKeys().delete(getShoppingCartKey(userId));
+            return "ok";
+        }catch (RedisException e) {
+            logger.error("redis报错",e);
+            return "fail";
+        }
+
+    }
+
+
+    private String getShoppingCartKey(String userId) {
+        return "shopping:cart:"+userId;
+    }
 
 
 }

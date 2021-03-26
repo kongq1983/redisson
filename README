@@ -39,3 +39,8 @@ http://localhost:10001/redis/get?key=name
 
 # 启动
 ./src/redis-server redis.conf &
+
+
+
+
+
