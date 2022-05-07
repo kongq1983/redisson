@@ -1,0 +1,28 @@
+
+spring:
+  application:
+      name: redisson-serialize
+  # 单机redis 配置
+  redis:
+#    host: 192.168.99.100
+#    host: 172.16.5.12
+#    host: 172.16.5.1
+    host: 172.16.5.19
+    port: 6379
+    database: 10
+    password: jkct-redis-123456
+#  profiles:
+#    active: dev
+
+
+
+
+server:
+  port: 10003
+  servlet:
+    context-path: /
+#  address: localhost
+
+
+
+

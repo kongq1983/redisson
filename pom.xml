@@ -15,6 +15,7 @@
         <module>distributed-collection</module>
         <module>redisson-config</module>
         <module>shopping-cart</module>
+        <module>redisson-serialize</module>
     </modules>
 
     <parent>
@@ -38,6 +39,7 @@
         <common.io.version>2.6</common.io.version>
         <redisson.spring.boot.starter.version>3.12.2</redisson.spring.boot.starter.version>
         <redission.server.version>1.0-SNAPSHOT</redission.server.version>
+        <lombok-version>1.18.20</lombok-version>
     </properties>
 
 
@@ -68,6 +70,12 @@
                 <artifactId>hamcrest-library</artifactId>
                 <version>1.3</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version}</version>
             </dependency>
 
 
@@ -113,6 +121,11 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
     </dependencies>
