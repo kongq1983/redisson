@@ -17,7 +17,7 @@ public class BaseTest {
         config = new Config();
         String prefix = "redis://";
 
-        String host = "192.168.3.201";
+        String host = "192.168.99.100";
         int port = 6379;
         int database = 0;
 //        String password = "jkct-redis-123456";

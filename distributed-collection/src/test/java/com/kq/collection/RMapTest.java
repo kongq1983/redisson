@@ -22,8 +22,8 @@ public class RMapTest extends BaseTest{
     public void testAdd() throws Exception{
         RedissonClient redissonClient = this.redisson();
         RMap<String,String> map = redissonClient.getMap(MAP_KEY);
-//        map.put("one","1");
-//        map.put("two","2");
+        map.put("one","1");
+        map.put("two","2");
 
         for(Map.Entry<String, String> kv : map.entrySet() ) {
             String key = kv.getKey();
