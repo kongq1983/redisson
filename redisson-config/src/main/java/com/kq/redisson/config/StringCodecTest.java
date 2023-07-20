@@ -17,7 +17,8 @@ public class StringCodecTest {
         Config config = new Config();
         config.setCodec(StringCodec.INSTANCE);
         config.useSingleServer().setAddress("redis://"+ Util.REDIS_SERVER_URL)
-                .setPassword("jkct-redis-123456");
+//                .setPassword("jkct-redis-123456")
+                ;
 
         RedissonClient redisson = Redisson.create(config);
 
