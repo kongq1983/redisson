@@ -16,6 +16,7 @@
         <module>redisson-config</module>
         <module>shopping-cart</module>
         <module>redisson-serialize</module>
+        <module>redis-cluster</module>
     </modules>
 
     <parent>

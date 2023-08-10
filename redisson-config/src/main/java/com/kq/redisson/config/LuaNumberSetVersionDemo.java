@@ -21,6 +21,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class LuaNumberSetVersionDemo {
 
+    final static String SET_VERSION_SCRIPT = "local curVersion = tonumber(redis.call('get',KEYS[1])); "+
+            "local val = tonumber(ARGV[1]); "+
+            "if curVersion == nil then "+
+            "   redis.call('set',KEYS[1],val) ; " +
+            "elseif curVersion < val then " +
+            "   redis.call('set',KEYS[1],val) ; " +
+            "end; " +
+            "   curVersion = tonumber(redis.call('get',KEYS[1])); " +
+            "return curVersion;"
+            ;
+
+
     public static void main(String[] args) throws Exception{
 
         Config config = new Config();
@@ -46,25 +58,27 @@ public class LuaNumberSetVersionDemo {
         // 如果当前版本号 > redis中的版本号,则设置
         // 如果当前版本号 <= redis中的版本号,则忽略
         // 最后,返回redis中的版本号
-        final String script = "local curVersion = tonumber(redis.call('get',KEYS[1])); "+
-                "local val = tonumber(ARGV[1]); "+
-                "if curVersion == nil then "+
-                "   redis.call('set',KEYS[1],val) ; " +
-                "elseif curVersion < val then " +
-                "   redis.call('set',KEYS[1],val) ; " +
-                "end; " +
-                "   curVersion = tonumber(redis.call('get',KEYS[1])); " +
-                "return curVersion;"
-                ;
+//        final String script = "local curVersion = tonumber(redis.call('get',KEYS[1])); "+
+//                "local val = tonumber(ARGV[1]); "+
+//                "if curVersion == nil then "+
+//                "   redis.call('set',KEYS[1],val) ; " +
+//                "elseif curVersion < val then " +
+//                "   redis.call('set',KEYS[1],val) ; " +
+//                "end; " +
+//                "   curVersion = tonumber(redis.call('get',KEYS[1])); " +
+//                "return curVersion;"
+//                ;
+
+
 
         int val = 110;
 
-        Long value = rScript.eval(RScript.Mode.READ_WRITE, script, RScript.ReturnType.INTEGER, Arrays.asList("test:current:version"), val);
+        Long value = rScript.eval(RScript.Mode.READ_WRITE, SET_VERSION_SCRIPT, RScript.ReturnType.INTEGER, Arrays.asList("test:current:version"), val);
         // guest
         System.out.println("直接执行脚本,返回值为："+value+",传入值为:"+val);
 
 
-        multiThread(rScript,script);
+        multiThread(rScript,SET_VERSION_SCRIPT);
 
 
         TimeUnit.SECONDS.sleep(5);
