@@ -17,6 +17,7 @@
         <module>shopping-cart</module>
         <module>redisson-serialize</module>
         <module>redis-cluster</module>
+        <module>spring-redis</module>
     </modules>
 
     <parent>
