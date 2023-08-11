@@ -1,0 +1,55 @@
+
+#spring:
+#  application:
+#      name: redis-cluster
+#  # 单机redis 配置
+#  redis:
+##    host: 172.16.4.79
+##    port: 8001
+##    database: 0
+#    password: hzsun
+#    cluster:
+#      nodes: 172.16.4.79:8001
+
+#  profiles:
+#    active: dev
+
+
+
+
+server:
+  port: 10000
+#  servlet:
+#    context-path: /
+#  address: localhost
+
+
+# redis配置
+redis:
+  # 默认datebase为5
+#  database: 5
+#  hostName: ${common.redis.host}
+  # database: 0
+  # hostName: 172.16.4.79
+  maxIdle: 200
+  maxTotal: 5000
+  maxWaitMillis: 1000
+  minEvictableIdleTimeMillis: 60000
+  numTestsPerEvictionRun: 1024
+#  password: ${common.redis.password}
+  password: hzsun
+#  port: ${common.redis.port}
+  # password: hzsun
+  # port: 8001
+  testOnBorrow: true
+  testWhileIdle: true
+  timeBetweenEvictionRunsMillis: 30000
+  timeout: 10000
+
+  host01: 172.16.4.79
+  port01: 8001
+  host02: 172.16.4.79
+  port02: 8002
+  host03: 172.16.4.79
+  port03: 8003
+
